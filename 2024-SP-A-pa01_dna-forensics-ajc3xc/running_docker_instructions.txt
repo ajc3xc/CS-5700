@@ -1,0 +1,12 @@
+#run without port forwarding
+podman run --interactive --tty --rm --mount type=bind,source="$(pwd)"/,target=/your_code --workdir=/your_code git-docker-classes.mst.edu/containers/container bash
+
+#running with jupyterlab port forwarding enabled
+#switch left 8888 to other port number if port already taken
+podman run --interactive --tty --publish 127.0.0.1:8888:8888/tcp --mount type=bind,source="$(pwd)"/,target=/your_code --workdir=/your_code git-docker-classes.mst.edu/containers/container bash
+
+#run jupyter lab
+jupyter lab --ip 0.0.0.0 --port 8888 --allow-root --no-browser
+
+#convert taylor's .py files to .ipynb
+jupytext --set-formats ipynb,py <file>.ipynb

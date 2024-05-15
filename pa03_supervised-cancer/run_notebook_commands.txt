@@ -1,0 +1,4 @@
+podman run --interactive --tty --rm --mount type=bind,source="$(pwd)"/,target=/your_code -p 8888:8888 --workdir=/your_code git-docker.mst.edu/os/container fish
+
+#or, if you don't need an open port
+podman run --interactive --tty --rm --mount type=bind,source="$(pwd)"/,target=/your_code --workdir=/your_code git-docker.mst.edu/os/container fish
